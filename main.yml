@@ -1,0 +1,22 @@
+---
+- name: Arch Post-Install
+  hosts: localhost
+  connection: local
+  vars:
+    home: "{{ lookup('env', 'HOME') }}"
+    config: "{{ home }}/.config"
+    dots_root: "{{ playbook_dir | dirname | dirname }}/Dotfiles"
+  vars_files:
+    - ./vault
+      # pre_tasks:
+  tasks:
+    - name: set roles
+      set_fact:
+        roles: "{{ ansible_run_tags != ['all'] and ansible_run_tags or default_roles | difference(exclude_roles | default([])) }}"
+        tags:
+          - always
+
+    - name: Display roles
+      debug: "var=roles"
+      tags:
+        - always

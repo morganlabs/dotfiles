@@ -1,0 +1,62 @@
+#!/bin/sh
+
+# VARIABLES -------------------- #
+# Colours
+RESTORE='\033[0m'
+RED='\033[00;31m'
+GREEN='\033[00;32m'
+YELLOW='\033[00;33m'
+BLUE='\033[00;34m'
+
+# File Paths
+DOTFILES="$HOME/Dotfiles"
+VAULT_SECRET="$HOME/.vault.secret"
+
+# Ansible
+ANSIBLE_STDOUT_CALLBACK=yaml
+
+# FUNCTIONS -------------------- #
+function task() {
+	printf "${BLUE}TASK: $1${RESTORE}\n"
+}
+
+function notice() {
+	printf "${YELLOW}NOTICE: $1${RESTORE}\n"
+}
+
+function fatal() {
+	printf "${RED}FATAL: $1${RESTORE}\n"
+}
+
+# PRE-INSTALL CHECKS ----------- #
+if [[ ! -x "$(command -v ansible)" ]]; then
+	task "Installing Ansible..."
+	sudo pacman --noconfirm -S ansible
+fi
+
+# CLONE REPO ------------------- #
+if [[ ! -f "$DOTFILES/.do_not_update_git" ]]; then
+	if [[ ! -d "$DOTFILES" ]]; then
+		task "Cloning Dotfiles repository"
+		git clone --quiet "https://github.com/morganlabs/dotfiles.git" "$DOTFILES"
+	else
+		task "Updating Dotfiles repository"
+		git -C "$DOTFILES" pull --quiet
+	fi
+else
+	notice "File $DOTFILES/.do_not_update_git exists, will not pull git repository."
+fi
+
+# INSTALLATION ----------------- #
+cd "$DOTFILES"
+
+task "Installing/Updating Galaxy Requirements"
+ansible-galaxy install -r requirements.yml
+
+task "Running Playbook"
+ 
+if [[ -f "$VAULT_SECRET" ]]; then
+ 	ansible-playbook main.yml --vault-password-file "$VAULT_SECRET" --ask-become-pass
+else
+	fatal "Ansible Vault password file not found."
+fi
