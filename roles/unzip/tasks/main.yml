@@ -1,0 +1,5 @@
+---
+- name: Install
+  pacman:
+    name: unzip
+    state: present

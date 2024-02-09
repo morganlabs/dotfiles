@@ -56,7 +56,7 @@ ansible-galaxy install -r requirements.yml
 task "Running Playbook"
  
 if [[ -f "$VAULT_SECRET" ]]; then
- 	ansible-playbook main.yml --vault-password-file "$VAULT_SECRET" --ask-become-pass
+ 	ansible-playbook main.yml --vault-password-file "$VAULT_SECRET" --ask-become-pass "$@"
 else
 	fatal "Ansible Vault password file not found."
 fi

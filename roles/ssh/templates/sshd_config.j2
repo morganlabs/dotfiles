@@ -1,0 +1,17 @@
+Include /etc/ssh/sshd_config.d/*.conf
+
+PermitRootLogin no
+PermitEmptyPasswords no
+ChallengeResponseAuthentication no
+PasswordAuthentication no
+UsePAM no
+MaxAuthTries 2
+Protocol 2
+X11Forwarding no 
+AllowTcpForwarding no
+ClientAliveInterval 240
+
+Port {{ ssh_port }}
+
+AuthorizedKeysFile	.ssh/authorized_keys
+Subsystem	sftp	/usr/lib/ssh/sftp-server

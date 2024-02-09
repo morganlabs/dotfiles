@@ -1,0 +1,6 @@
+---
+- name: Install
+  flatpak:
+    name: com.brave.Browser
+    state: present
+    method: user

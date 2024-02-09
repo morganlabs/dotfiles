@@ -1,0 +1,11 @@
+---
+- name: Install rustup
+  become: true
+  pacman:
+    name: rustup
+    state: present
+- name: Install rust stable
+  command:
+    cmd: "rustup install stable"
+  args:
+    creates: "{{ home }}/.rustup/toolchains/stable-*"

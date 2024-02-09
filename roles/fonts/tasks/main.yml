@@ -1,0 +1,5 @@
+---
+- name: Install
+  kewlfft.aur.aur:
+    name: ["ttf-jetbrains-mono-nerd", "ttf-jetbrains-mono", "ttf-font-icons", "noto-fonts", "ttf-ms-fonts", "inter-font", "otf-montserrat", "noto-fonts-cjk", "ttf-joypixels"]
+    state: present

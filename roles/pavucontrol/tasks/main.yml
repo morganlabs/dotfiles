@@ -1,0 +1,6 @@
+---
+- name: Install
+  flatpak:
+    name: org.pulseaudio.pavucontrol
+    method: user
+    state: present

@@ -1,0 +1,17 @@
+---
+- name: Install Flatpak
+  become: true
+  pacman:
+    name: flatpak
+    state: present
+- name: Install Flathub for Flatpak
+  flatpak_remote:
+    name: flathub
+    state: present
+    method: user
+    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+- name: Create proper directories # I have no clue why this needs to be done, but it doesn't work otherwise...
+  become: true
+  command: flatpak remotes
+  args:
+    creates: /var/lib/flatpak

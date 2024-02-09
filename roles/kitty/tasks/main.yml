@@ -1,0 +1,11 @@
+---
+- name: Install
+  become: true
+  pacman:
+    name: kitty
+    state: present
+- name: Add configs
+  file:
+    src: "{{ roles }}/kitty/files"
+    dest: "{{ config }}/kitty"
+    state: link

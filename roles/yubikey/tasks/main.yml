@@ -1,0 +1,21 @@
+---
+- name: Install
+  become: true
+  pacman:
+    name: pam-u2f
+    state: present
+- name: Create config directory
+  file:
+    path: "{{ config }}/Yubico"
+    state: directory
+- name: Add Yubikeys
+  copy:
+    dest: "{{ config }}/Yubico/u2f_keys"
+    content: "{{ yubikey_1 }}"
+- name: Add Yubikey so sudo
+  become: true
+  lineinfile:
+    path: /etc/pam.d/sudo
+    line: auth sufficient pam_u2f.so cue [cue_prompt=Tap Security Key]
+    insertafter: '^#%PAM-1.0'
+    state: present

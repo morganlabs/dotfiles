@@ -1,0 +1,11 @@
+---
+- name: Install
+  become: true
+  pacman:
+    name: tmux
+    state: present
+- name: Add config
+  file:
+    src: "{{ roles }}/tmux/files"
+    dest: "{{ config }}/tmux"
+    state: link

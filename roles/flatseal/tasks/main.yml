@@ -1,0 +1,6 @@
+---
+- name: Install
+  flatpak:
+    name: com.github.tchx84.Flatseal
+    method: user
+    state: present

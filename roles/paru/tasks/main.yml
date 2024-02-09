@@ -1,0 +1,21 @@
+---
+- name: Check if installed
+  ansible.builtin.stat:
+    path: '/usr/bin/paru'
+  register: paru_check
+- name: Clone from AUR
+  ansible.builtin.git:
+    repo: 'https://aur.archlinux.org/paru.git'
+    dest: '{{ home }}/paru'
+  when: paru_check.stat.exists == False
+- name: Build and install 
+  ansible.builtin.shell:
+    cmd: 'yes | makepkg -si'
+  args:
+    chdir: '{{ home }}/paru'
+  when: paru_check.stat.exists == False
+- name: Remove the cloned directory after installation
+  ansible.builtin.file:
+    path: '{{ home }}/paru'
+    state: absent
+  when: paru_check.stat.exists == False

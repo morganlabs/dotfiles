@@ -1,22 +1,79 @@
 ---
-- name: Arch Post-Install
-  hosts: localhost
+- hosts: localhost
   connection: local
+
   vars:
     home: "{{ lookup('env', 'HOME') }}"
     config: "{{ home }}/.config"
-    dots_root: "{{ playbook_dir | dirname | dirname }}/Dotfiles"
+    dots_root: "{{ playbook_dir }}"
+    roles: "{{ dots_root }}/roles"
+    username: "{{ ansible_user_id }}"
+
+    template_symlink_mode: "u=rw,g=r,o=r"
   vars_files:
     - ./vault
-      # pre_tasks:
-  tasks:
-    - name: set roles
-      set_fact:
-        roles: "{{ ansible_run_tags != ['all'] and ansible_run_tags or default_roles | difference(exclude_roles | default([])) }}"
-        tags:
-          - always
 
-    - name: Display roles
-      debug: "var=roles"
-      tags:
-        - always
+  pre_tasks:
+    - name: 'pacman : Enable Multilib'
+      become: true
+      blockinfile:
+        path: /etc/pacman.conf
+        block: |
+          [multilib]
+          Include = /etc/pacman.d/mirrorlist
+        insertafter: '^#\[multilib\]$'
+        state: present
+    - name: 'pacman : Enable ParallelDownloads and setting appropriate core count'
+      become: true
+      replace:
+        path: /etc/pacman.conf
+        regexp: '.*ParallelDownloads = .*'
+        replace: 'ParallelDownloads = {{ ansible_processor_vcpus + 4 }}'
+    - name: 'pacman : Update cache and system upgrade'
+      become: true
+      pacman:
+        update_cache: true
+        upgrade: true
+
+  roles:
+    # Essential
+    - { role: rust, tags: ['rust'] }
+    - { role: paru, tags: ['paru'] }
+    - { role: flatpak, tags: ['flatpak'] }
+    - { role: home, tags: ['home'] }
+    - { role: yubikey, tags: ['yubikey'] }
+    - { role: ssh, tags: ['ssh'] }
+    - { role: wireless, tags: ['wireless'] }
+
+    # Services
+    - { role: bluetooth, tags: ['bluetooth'] }
+    # - { role: syncthing, tags: ['syncthing'] }
+    - { role: ufw, tags: ['ufw'] }
+
+    # Command-line
+    - { role: zsh, tags: ['zsh'] }
+    - { role: git, tags: ['git'] }
+    - { role: bat, tags: ['bat'] }
+    - { role: btop, tags: ['btop'] }
+    - { role: eza, tags: ['eza'] }
+    - { role: node, tags: ['node'] }
+    - { role: tmux, tags: ['tmux'] }
+    - { role: unzip, tags: ['unzip'] }
+    - { role: nvim, tags: ['nvim'] }
+
+    # Graphical Environment
+    # - { role: hyprland, tags: ['hyprland'] }
+    - { role: mako, tags: ['mako'] }
+    - { role: lemurs, tags: ['lemurs'] }
+    - { role: flatseal, tags: ['flatseal'] }
+    - { role: obsidian, tags: ['obsidian'] }
+    - { role: pavucontrol, tags: ['pavucontrol'] }
+    - { role: spotify, tags: ['spotify'] }
+    - { role: steam, tags: ['steam'] }
+    - { role: blender, tags: ['blender'] }
+    - { role: brave, tags: ['brave'] }
+    - { role: discord, tags: ['discord'] }
+    - { role: fonts, tags: ['fonts'] }
+    - { role: kitty, tags: ['kitty'] }
+    - { role: libreoffice, tags: ['libreoffice'] }
+

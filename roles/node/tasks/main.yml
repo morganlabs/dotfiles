@@ -1,0 +1,13 @@
+---
+- name: Install
+  kewlfft.aur.aur:
+    name: ["nodejs", "npm", "bun-bin"]
+- name: Create `~/.local/npm`
+  file:
+    path: "{{ home }}/.local/share/npm"
+    state: directory
+    recurse: true
+- name: Link `~/.npmrc`
+  template:
+    src: npmrc.j2
+    dest: "{{ home }}/.npmrc"

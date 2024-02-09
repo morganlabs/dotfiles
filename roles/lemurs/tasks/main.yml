@@ -1,0 +1,22 @@
+---
+- name: Install
+  kewlfft.aur.aur:
+    name: lemurs
+    state: present
+- name: Create Wayland location
+  become: true
+  file:
+    path: /etc/lemurs/wayland
+    state: directory
+- name: Add Hyprland launch script
+  become: true
+  template:
+    src: hyprland.j2
+    dest: /etc/lemurs/wayland/hyprland
+    mode: +x
+- name: Enable
+  become: true
+  systemd_service:
+    name: lemurs
+    enabled: true
+    state: started

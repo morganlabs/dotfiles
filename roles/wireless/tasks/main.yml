@@ -1,0 +1,17 @@
+---
+- name: Install
+  become: true
+  pacman:
+    name: ["networkmanager", "iwd"]
+    state: present
+- name: Use iwd backend for Network Manager
+  become: true
+  template:
+    src: wifi_backend.conf.j2
+    dest: /etc/NetworkManager/conf.d/wifi_backend.conf
+- name: Enable
+  become: true
+  systemd_service:
+    name: NetworkManager
+    enabled: true
+    state: started

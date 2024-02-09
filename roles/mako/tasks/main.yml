@@ -1,0 +1,11 @@
+---
+- name: Install
+  become: true
+  pacman:
+    name: mako
+    state: present
+- name: Config
+  file:
+    src: "{{ roles }}/mako/files"
+    dest: "{{ config }}/mako"
+    state: link

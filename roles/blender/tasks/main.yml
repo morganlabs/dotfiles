@@ -1,0 +1,6 @@
+---
+- name: Install
+  flatpak:
+    name: org.blender.Blender
+    state: present
+    method: user

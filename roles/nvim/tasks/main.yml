@@ -1,0 +1,11 @@
+---
+- name: Install
+  become: true
+  pacman:
+    name: ["neovim", "ripgrep"]
+    state: present
+- name: Config
+  file:
+    src: "{{ roles }}/nvim/files"
+    dest: "{{ config }}/nvim"
+    state: link

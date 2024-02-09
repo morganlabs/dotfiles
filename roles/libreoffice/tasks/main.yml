@@ -1,0 +1,6 @@
+---
+- name: Install
+  flatpak:
+    name: org.libreoffice.LibreOffice
+    state: present
+    method: user
