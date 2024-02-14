@@ -14,3 +14,11 @@ dependencies:
   - { role: eww, tags: ['eww'] }
   - { role: wmenu, tags: ['wmenu'] }
   - { role: pywal, tags: ['pywal'] }
+  - { role: pipewire, tags: ['pipewire'] }
+  - { role: wayland, tags: ['wayland'] }
+  - { role: wlr-screenshots, tags: ['wlr-screenshots'] }
+  - { role: wl-screenrec, tags: ['wl-screenrec'] }
+  - { role: lockscreen, tags: ['lockscreen'] }
+  - { role: wl-clipboard, tags: ['wl-clipboard'] }
+  - { role: nm-applet, tags: ['nm-applet'] }
+

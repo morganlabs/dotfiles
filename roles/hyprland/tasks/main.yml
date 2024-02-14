@@ -1,7 +1,7 @@
 ---
 - name: Install
   kewlfft.aur.aur:
-    name: ["hyprland", "pipewire", "wireplumber", "pipewire-jack", "pipewire-alsa", "pipewire-pulse", "xdg-desktop-portal-hyprland", "xdg-desktop-portal-gtk", "polkit-kde-agent", "qt5-wayland", "qt6-wayland", "wpaperd", "satty", "grim", "slurp", "wl-screenrec", "swaylock", "swayidle", "swaybg", "wl-clipboard", "python-pywal", "network-manager-applet"]
+    name: ["hyprland", "xdg-desktop-portal-hyprland", "xdg-desktop-portal-gtk"]
     state: present
 - name: Config
   file:
@@ -38,4 +38,22 @@
 - include_role:
     name: eww
 - include_role:
-    name: transmissioneww
+    name: transmission
+- include_role:
+    name: pipewire
+- include_role:
+    name: polkit
+- include_role:
+    name: wayland
+- include_role:
+    name: wlr-screenshots
+- include_role:
+    name: wl-screenrec
+- include_role:
+    name: lockscreen
+- include_role:
+    name: swaybg
+- include_role:
+    name: wl-clipboard
+- include_role:
+    name: nm-applet

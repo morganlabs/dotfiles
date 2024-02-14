@@ -1,0 +1,10 @@
+---
+- name: Install
+  become: true
+  pacman:
+    name: swaybg
+    state: present
+- name: Create Wallpapers directory
+  file:
+    path: "{{ home }}/Wallpapers"
+    state: directory

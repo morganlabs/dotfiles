@@ -1,0 +1,5 @@
+---
+- name: Install
+  kewlfft.aur.aur:
+    name: wl-screenrec
+    state: present
