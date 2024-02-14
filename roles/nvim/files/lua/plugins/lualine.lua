@@ -6,7 +6,7 @@ return {
 
         line.setup({
             options = {
-                theme = 'tokyonight',
+                theme = 'pywal-nvim',
                 section_separators = { left = ' ', right = ' ' },
                 component_separators = { left = '|', right = '|' }
             },

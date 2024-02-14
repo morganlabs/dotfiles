@@ -17,6 +17,7 @@
  :windowtype "dock"
  :exclusive true
  :orientation "v"
+ :namespace "overlay"
  :geometry (geometry :x "0"
      :y "0"
      :width "48"

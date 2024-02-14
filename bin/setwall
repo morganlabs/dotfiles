@@ -15,7 +15,7 @@ if [[ -d "$IMAGE" ]]; then
 fi
 
 echo "Generating colourscheme..."
-wal -i "$IMAGE"
+wal --saturate 0.75 -i "$IMAGE"
 
 echo "Setting wallpaper..."
 killall swaybg &2>/dev/null 

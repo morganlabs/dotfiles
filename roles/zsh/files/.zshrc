@@ -92,4 +92,9 @@ function mkcdir() {
 }
 
 # PROMPT --------------------- #
-PROMPT="%B%F{#E5793B}[%m:%3~]%b%{$reset_color%} "
+PROMPT="%B%F{orange}[%m:%3~]%b%{$reset_color%} "
+
+# PYWAL ---------------------- #
+(\cat ~/.cache/wal/sequences &)
+source ~/.cache/wal/colors-tty.sh
+
