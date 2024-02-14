@@ -1,0 +1,5 @@
+---
+- name: Install
+  kewlfft.aur.aur:
+    name: pfetch-rs
+    state: present

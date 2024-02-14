@@ -1,0 +1,5 @@
+- name: Install
+  flatpak:
+    name: com.transmissionbt.Transmission
+    method: user
+    state: present

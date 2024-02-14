@@ -1,0 +1,16 @@
+dependencies:
+  - { role: lemurs, tags: ['lemurs'] }
+  - { role: flatseal, tags: ['flatseal'] }
+  - { role: obsidian, tags: ['obsidian'] }
+  - { role: pavucontrol, tags: ['pavucontrol'] }
+  - { role: spotify, tags: ['spotify'] }
+  - { role: steam, tags: ['steam'] }
+  - { role: blender, tags: ['blender'] }
+  - { role: brave, tags: ['brave'] }
+  - { role: discord, tags: ['discord'] }
+  - { role: fonts, tags: ['fonts'] }
+  - { role: kitty, tags: ['kitty'] }
+  - { role: libreoffice, tags: ['libreoffice'] }
+  - { role: eww, tags: ['eww'] }
+  - { role: wmenu, tags: ['wmenu'] }
+  - { role: pywal, tags: ['pywal'] }

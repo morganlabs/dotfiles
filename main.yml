@@ -23,6 +23,12 @@
           Include = /etc/pacman.d/mirrorlist
         insertafter: '^#\[multilib\]$'
         state: present
+    - name: 'pacman : Enable coloured output'
+      become: true
+      lineinfile:
+        path: /etc/pacman.conf
+        regexp: '^#\s*Color.*$'
+        line: 'Color'
     - name: 'pacman : Enable ParallelDownloads and setting appropriate core count'
       become: true
       replace:
@@ -60,20 +66,8 @@
     - { role: tmux, tags: ['tmux'] }
     - { role: unzip, tags: ['unzip'] }
     - { role: nvim, tags: ['nvim'] }
+    - { role: pfetch, tags: ['pfetch'] }
 
     # Graphical Environment
-    # - { role: hyprland, tags: ['hyprland'] }
-    - { role: mako, tags: ['mako'] }
-    - { role: lemurs, tags: ['lemurs'] }
-    - { role: flatseal, tags: ['flatseal'] }
-    - { role: obsidian, tags: ['obsidian'] }
-    - { role: pavucontrol, tags: ['pavucontrol'] }
-    - { role: spotify, tags: ['spotify'] }
-    - { role: steam, tags: ['steam'] }
-    - { role: blender, tags: ['blender'] }
-    - { role: brave, tags: ['brave'] }
-    - { role: discord, tags: ['discord'] }
-    - { role: fonts, tags: ['fonts'] }
-    - { role: kitty, tags: ['kitty'] }
-    - { role: libreoffice, tags: ['libreoffice'] }
+    - { role: hyprland, tags: ['hyprland'] }
 

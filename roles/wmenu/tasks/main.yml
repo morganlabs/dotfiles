@@ -1,0 +1,5 @@
+---
+- name: Install
+  become: true
+  pacman:
+    name: ["dmenu", "wmenu"]

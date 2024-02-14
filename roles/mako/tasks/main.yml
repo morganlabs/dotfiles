@@ -2,7 +2,7 @@
 - name: Install
   become: true
   pacman:
-    name: mako
+    name: ["mako", "libnotify"]
     state: present
 - name: Config
   file:

@@ -1,0 +1,16 @@
+---
+- name: Install
+  become: true
+  pacman:
+    name: python-pywal
+    state: present
+- name: Templates
+  file:
+    src: "{{ roles }}/pywal/files"
+    dest: "{{ config }}/wal/templates"
+    state: link
+    force: true
+- name: Generate initial theme
+  shell: wal --theme 3024
+  args:
+    creates: "{{ home }}/.cache/wal"

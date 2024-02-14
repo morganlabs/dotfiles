@@ -1,0 +1,110 @@
+(deflisten workspaces :initial "[]" "bash ./scripts/workspaces/get-workspaces.sh")
+(deflisten current_workspace :initial "1" "bash ./scripts/workspaces/get-active-workspace.sh")
+(deflisten music :initial "{ \"nothing\": true }" "playerctl metadata --player=cider2,spotify --follow --format '{ \"nothing\": false, \"status\": \"{{ status }}\", \"title\": \"{{ title }}\", \"artist\": \"{{ artist }}\" }'")
+(defpoll volume :interval "1s" "./scripts/volume.sh")
+
+(defpoll hour :interval "1s" "date +%H")
+(defpoll min  :interval "1s" "date +%M")
+(defpoll sec  :interval "1s" "date +%S")
+
+(defpoll day_word :interval "1s" "date +%a")
+(defpoll day      :interval "1s" "date +%d")
+(defpoll month    :interval "1s"  "date +%m")
+(defpoll year     :interval "1s"  "date +%y")
+
+(defwindow bar
+ :monitor 0
+ :windowtype "dock"
+ :exclusive true
+ :orientation "v"
+ :geometry (geometry :x "0"
+     :y "0"
+     :width "48"
+     :height "100%"
+     :anchor "center left")
+ (bar))
+
+(defwidget bar []
+ (centerbox :orientation "v"
+  (topItems)
+  (centreItems)
+  (bottomItems)))
+
+(defwidget workspaces []
+  (eventbox :onscroll "bash ./scripts/workspaces/change-active-workspace.sh {} ${current_workspace}" :class "workspaces-widget"
+    (box :spacing 8 :orientation "v" :valign "start"
+      (for workspace in workspaces
+        (eventbox :onclick "hyprctl dispatch workspace ${workspace.id}"
+          (box :class "workspace ${workspace.id == current_workspace ? "active highlight" : workspace.windows > 0 ? "inactive" : "empty"}"
+            (label :angle 45 :text {workspace.id == current_workspace ? "󰝤" : "󰝣"})
+            )
+          )
+        )
+      )
+    )
+  )
+
+(defwidget topItems []
+ (box
+  :class "topItems"
+  :orientation "v"
+  :valign "start"
+  :spacing 16
+  :space-evenly false
+  (workspaces) (volume)))
+
+(defwidget centreItems []
+ (box
+  :class "centreItems"
+  :orientation "v"
+  :valign "center"
+  :spacing 16
+  :space-evenly false
+  (time) ))
+
+(defwidget bottomItems []
+ (box
+  :class "bottomItems"
+  :orientation "v"
+  :valign "end"
+  :spacing 16
+  :space-evenly false
+  (music) (date)))
+
+
+(defwidget music []
+ (box
+  :class "music"
+  :orientation "v"
+  :valign "center"
+  :space-evenly false
+  :spacing 8
+  (label :limit-width 34 :angle 90 :text "${music.nothing ? "" : "${music.title != "" ? music.title : "Unknown"} by ${music.artist != "" ? music.artist : "Unknown"}"}")
+  (box :class "highlight" (label :angle 90 :text "${music.nothing ? "" : music.status == "Playing" ? "󰐊" : music.status == "Paused" ? "󰏤" : "󰓛"}"))
+))
+
+(defwidget date []
+ (box
+  :orientation "v" 
+  :valign "center" 
+  day_word day month (box :class "highlight" year)))
+
+(defwidget volume []
+ (eventbox
+  :class "workspaces-widget"
+  :onscroll "./scripts/change-volume.sh {}"
+  :onclick "flatpak run org.pulseaudio.pavucontrol"
+  :onrightclick "pamixer --toggle-mute"
+  (box
+   :orientation "v" 
+   :valign "center" 
+   :tooltip "${volume.sink}"
+   (box :class "highlight" "${volume.icon}")
+   (label :class "${volume.mute ? "muted" : ""}":markup "${volume.volume}")))
+ )
+
+(defwidget time []
+ (box
+  :orientation "v" 
+  :valign "center" 
+  hour min (box :class "highlight" sec)))

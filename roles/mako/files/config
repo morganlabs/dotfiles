@@ -1,7 +1,7 @@
 font=JetBrains Mono 11
 width=340
 height=120
-margin=6
+margin=10
 padding=8
 format=<span text_transform="uppercase" size="8pt">%a</span>\n<b><span size="12pt">%s</span></b>\n%b
 

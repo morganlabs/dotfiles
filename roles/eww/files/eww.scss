@@ -1,0 +1,30 @@
+@use "/home/morgan/.cache/wal/colors.scss" as *;
+
+* {
+    all: unset; 
+}
+
+.bar {
+    color: $foreground;
+    font-family: "JetBrains Mono", "Icons";
+    background-color: rgba($background, 0.85);
+    padding: 10px 0;
+}
+
+.highlight {
+    color: $color3;
+    font-weight: 700;
+}
+
+.muted {
+    opacity: 0.5;
+}
+
+.workspace {
+    font-size: 12px;
+
+    &.empty {
+        opacity: 0.25;
+    }
+}
+

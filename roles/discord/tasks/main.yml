@@ -4,3 +4,12 @@
     name: com.discordapp.Discord
     state: present
     method: user
+- name: Install Vencord Installer
+  kewlfft.aur.aur:
+    name: vencord-installer-cli-bin
+    state: present
+- name: Install Vencord
+  shell: ./VencordInstallerCli-linux -install -install-openasar -branch auto
+  args:
+    chdir: "{{ home }}/.cache/paru/clone/vencord-installer-cli-bin"
+    creates: "{{ home }}/.var/app/com.discordapp.Discord/config/Vencord"

@@ -1,0 +1,10 @@
+---
+- name: Install
+  kewlfft.aur.aur:
+    name: ["eww-git", "pamixer", "socat"]
+    state: present
+- name: Config
+  file:
+    src: "{{ roles }}/eww/files"
+    dest: "{{ config }}/eww"
+    state: link
