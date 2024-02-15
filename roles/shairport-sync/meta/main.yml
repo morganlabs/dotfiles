@@ -1,0 +1,2 @@
+dependencies:
+  - { role: shairport-sync-metadata-reader, tags: ["shairport-sync-metadata-reader"] }

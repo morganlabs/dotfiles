@@ -1,0 +1,35 @@
+---
+- name: Ensure not installed
+  stat:
+    path: "{{ home }}/.local/bin/shairport-sync-metadata-reader"
+  register: reader_check
+- name: Clone
+  git:
+    repo: https://github.com/mikebrady/shairport-sync-metadata-reader
+    dest: "{{ home }}/shairport-metadata-reader"
+  when: reader_check.stat.exists == False
+- name: Build
+  shell: |
+    autoreconf -i -f
+    ./configure
+    make
+  args:
+    chdir: "{{ home }}/shairport-metadata-reader"
+  when: reader_check.stat.exists == False
+- name: Make Install
+  become: true
+  shell: make install
+  args:
+    chdir: "{{ home }}/shairport-metadata-reader"
+  when: reader_check.stat.exists == False
+
+
+# - name: Check if installed
+#   ansible.builtin.stat:
+#     path: '/usr/bin/paru'
+#   register: paru_check
+# - name: Clone from AUR
+#   ansible.builtin.git:
+#     repo: 'https://aur.archlinux.org/paru.git'
+#     dest: '{{ home }}/paru'
+#   when: paru_check.stat.exists == False

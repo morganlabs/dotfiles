@@ -24,6 +24,19 @@
 ### tuple ### allow udp {{ ssh_port }} ::/0 any ::/0 in
 -A ufw6-user-input -p udp --dport {{ ssh_port }} -j ACCEPT
 
+### tuple ### allow tcp 3689 ::/0 any ::/0 in
+-A ufw6-user-input -p tcp --dport 3689 -j ACCEPT
+
+### tuple ### allow any 5353 ::/0 any ::/0 in
+-A ufw6-user-input -p tcp --dport 5353 -j ACCEPT
+-A ufw6-user-input -p udp --dport 5353 -j ACCEPT
+
+### tuple ### allow tcp 5000 ::/0 any ::/0 in
+-A ufw6-user-input -p tcp --dport 5000 -j ACCEPT
+
+### tuple ### allow udp 6000:6009 ::/0 any ::/0 in
+-A ufw6-user-input -p udp -m multiport --dports 6000:6009 -j ACCEPT
+
 ### END RULES ###
 
 ### LOGGING ###

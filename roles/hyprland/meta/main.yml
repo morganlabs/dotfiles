@@ -21,4 +21,4 @@ dependencies:
   - { role: lockscreen, tags: ['lockscreen'] }
   - { role: wl-clipboard, tags: ['wl-clipboard'] }
   - { role: nm-applet, tags: ['nm-applet'] }
-
+  - { role: shairport-sync, tags: ['shairport-sync'] }

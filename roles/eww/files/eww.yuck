@@ -1,6 +1,6 @@
 (deflisten workspaces :initial "[]" "bash ./scripts/workspaces/get-workspaces.sh")
 (deflisten current_workspace :initial "1" "bash ./scripts/workspaces/get-active-workspace.sh")
-(deflisten music :initial "{ \"nothing\": true }" "playerctl metadata --player=cider2,spotify --follow --format '{ \"nothing\": false, \"status\": \"{{ status }}\", \"title\": \"{{ title }}\", \"artist\": \"{{ artist }}\" }'")
+(deflisten music :initial "{ \"nothing\": true }" "bash ./scripts/music.sh")
 (defpoll volume :interval "1s" "./scripts/volume.sh")
 
 (defpoll hour :interval "1s" "date +%H")
@@ -81,7 +81,7 @@
   :space-evenly false
   :spacing 8
   (label :limit-width 34 :angle 90 :text "${music.nothing ? "" : "${music.title != "" ? music.title : "Unknown"} by ${music.artist != "" ? music.artist : "Unknown"}"}")
-  (box :class "highlight" (label :angle 90 :text "${music.nothing ? "" : music.status == "Playing" ? "󰐊" : music.status == "Paused" ? "󰏤" : "󰓛"}"))
+  (box :class "highlight" (label :angle 90 :text "${music.nothing ? "" : music.status == "Playing" ? "󰐊" : music.status == "Paused" ? "󰏤" : music.status == "Stopped" ? "󰓛" : "󰎈"}"))
 ))
 
 (defwidget date []

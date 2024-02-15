@@ -1,0 +1,19 @@
+---
+- name: Install
+  become: true
+  pacman:
+    name: shairport-sync
+    state: present
+- name: Config
+  become: true
+  template:
+    src: shairport-sync.conf.j2
+    dest: /etc/shairport-sync.conf
+    owner: root
+    group: root
+- name: Enable Avahi service
+  become: true
+  systemd:
+    name: avahi-daemon
+    enabled: true
+    state: started
