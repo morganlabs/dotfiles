@@ -1,0 +1,21 @@
+---
+- name: Install
+  become: true
+  pacman:
+    name: ["zsh", "bat", "exa", "btop"]
+    state: present
+- name: Config
+  file:
+    src: "{{ role_path }}/files/.zshrc"
+    dest: "{{ home }}/.zshrc"
+    state: link
+- name: Change root shell
+  become: true
+  user:
+    name: "root"
+    shell: "/bin/zsh"
+- name: Change user's shell
+  become: true
+  user:
+    name: "{{ username }}"
+    shell: "/bin/zsh"

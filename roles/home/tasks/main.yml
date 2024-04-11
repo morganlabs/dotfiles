@@ -1,0 +1,15 @@
+---
+- name: Setup user home directories
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - "{{ home }}/.config"
+    - "{{ home }}/Documents"
+    - "{{ home }}/Downloads"
+    - "{{ home }}/Music"
+    - "{{ home }}/Pictures"
+    - "{{ home }}/Videos"
+    - "{{ home }}/Personal"
+    - "{{ home }}/College"
+    - "{{ home }}/Work"

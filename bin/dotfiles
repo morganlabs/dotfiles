@@ -10,6 +10,6 @@ fi
 echo "Installing/Updating Galaxy Requirements"
 ansible-galaxy install -r requirements.yml
 
-task "Running Playbook"
+echo "Running Playbook"
 
-ansible-playbook "$HOME/Dotfiles/main.yml"
+ansible-playbook "$HOME/Dotfiles/main.yml" "$@"

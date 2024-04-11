@@ -5,6 +5,7 @@
   vars:
     home: "{{ lookup('env', 'HOME') }}"
     config: "{{ home }}/.config"
+    username: "{{ ansible_user_id }}"
   vars_files:
     - ./vault
 
@@ -36,3 +37,7 @@
         update_cache: true
         upgrade: true
 
+  roles:
+    - { name: home, tags: ["home"] }
+    - { name: zsh, tags: ["zsh"] }
+    - { name: nvim, tags: ["nvim"] }
