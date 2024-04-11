@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# PRE-INSTALL CHECKS ----------- #
+if [[ ! -x "$(command -v ansible)" ]]; then
+	task "Installing Ansible..."
+	sudo pacman --noconfirm -S ansible
+fi
+
+# INSTALLATION ----------------- #
+echo "Installing/Updating Galaxy Requirements"
+ansible-galaxy install -r requirements.yml
+
+task "Running Playbook"
+
+ansible-playbook "$HOME/Dotfiles/main.yml"
