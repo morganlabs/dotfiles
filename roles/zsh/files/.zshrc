@@ -85,6 +85,9 @@ mkabbr gll="git log"
 mkabbr gco="git checkout"
 mkabbr gfuck="git reset --hard"
 
+# NODE VERSION MANAGER ------- #
+source /usr/share/nvm/init-nvm.sh
+
 # FUNCTIONS ------------------ #
 function mkcdir() {
 	mkdir -p "$1"

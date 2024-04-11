@@ -10,7 +10,7 @@
     - ./vault
 
   pre_tasks:
-    - name: 'pacman : Enable Multilib'
+    - name: "pacman : Enable Multilib"
       become: true
       blockinfile:
         path: /etc/pacman.conf
@@ -19,19 +19,19 @@
           Include = /etc/pacman.d/mirrorlist
         insertafter: '^#\[multilib\]$'
         state: present
-    - name: 'pacman : Enable coloured output'
+    - name: "pacman : Enable coloured output"
       become: true
       lineinfile:
         path: /etc/pacman.conf
         regexp: '^#\s*Color.*$'
-        line: 'Color'
-    - name: 'pacman : Enable ParallelDownloads and setting appropriate core count'
+        line: "Color"
+    - name: "pacman : Enable ParallelDownloads and setting appropriate core count"
       become: true
       replace:
         path: /etc/pacman.conf
-        regexp: '.*ParallelDownloads = .*'
-        replace: 'ParallelDownloads = {{ ansible_processor_vcpus + 4 }}'
-    - name: 'pacman : Update cache and system upgrade'
+        regexp: ".*ParallelDownloads = .*"
+        replace: "ParallelDownloads = {{ ansible_processor_vcpus + 4 }}"
+    - name: "pacman : Update cache and system upgrade"
       become: true
       pacman:
         update_cache: true
@@ -39,5 +39,10 @@
 
   roles:
     - { name: home, tags: ["home"] }
+
+    - { name: paru, tags: ["paru"] }
+    - { name: ssh, tags: ["ssh"] }
     - { name: zsh, tags: ["zsh"] }
+    - { name: node, tags: ["node"] }
     - { name: nvim, tags: ["nvim"] }
+    - { name: fonts, tags: ["fonts"] }

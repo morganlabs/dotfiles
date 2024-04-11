@@ -2,7 +2,7 @@
 - name: Install
   become: true
   pacman:
-    name: ["zsh", "bat", "exa", "btop"]
+    name: ["zsh", "bat", "exa", "btop", "less"]
     state: present
 - name: Config
   file:

@@ -1,0 +1,19 @@
+---
+- name: Install
+  become: yes
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    name:
+      [
+        "fontconfig",
+        "ttf-ibm-plex",
+        "ttf-ms-fonts",
+        "noto-fonts-cjk",
+        "noto-fonts-emoji",
+      ]
+    state: present
+- name: Fontconfig
+  become: true
+  copy:
+    src: local.conf
+    dest: /etc/fonts/local.conf

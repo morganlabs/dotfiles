@@ -1,0 +1,39 @@
+---
+- name: Install libfido2
+  become: true
+  pacman:
+    name: libfido2
+    state: present
+
+- name: Ensure that `~/.ssh` exists.
+  file:
+    dest: "{{ home }}/.ssh"
+    mode: 0700
+    state: directory
+- name: Install Public key
+  copy:
+    dest: "{{ home }}/.ssh/id_ed25519_sk.pub"
+    content: "{{ sk_ssh_pubkey }}"
+    mode: 0644
+- name: Install Private key
+  copy:
+    dest: "{{ home }}/.ssh/id_ed25519_sk"
+    content: "{{ sk_ssh_prikey }}"
+    mode: 0600
+- name: Add SSH key to authorized_keys
+  authorized_key:
+    user: "{{ username }}"
+    key: "{{ sk_ssh_pubkey }}"
+    state: present
+
+- name: Add sshd config
+  become: true
+  template:
+    src: sshd_config.j2
+    dest: /etc/ssh/sshd_config
+- name: Enable sshd
+  become: true
+  systemd:
+    name: sshd
+    enabled: true
+    state: reloaded

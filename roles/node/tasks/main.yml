@@ -1,0 +1,15 @@
+---
+- name: Install nvm
+  become: yes
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    name: nvm
+    state: present
+- name: Install Node LTS
+  shell: /bin/bash -c "source /usr/share/nvm/nvm.sh && nvm install --lts"
+  args:
+    creates: /home/takumi/.nvm/versions/node/
+- name: Install Bun
+  npm:
+    name: bun
+    global: true

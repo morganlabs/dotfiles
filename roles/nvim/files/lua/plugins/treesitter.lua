@@ -9,9 +9,10 @@ return {
     configs.setup({
       ensure_installed = {
         "lua", "javascript", "typescript", "svelte", "astro", "rust",
-        "html", "css", "scss"
+        "html", "css", "scss", "yaml"
       },
       sync_install = false,
+      auto_install = true,
       highlight = { enable = true },
       indent = { enable = true },
     })
