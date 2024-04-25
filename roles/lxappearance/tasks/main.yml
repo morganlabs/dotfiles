@@ -1,0 +1,6 @@
+---
+- name: Install
+  become: true
+  pacman:
+    name: lxappearance
+    state: present

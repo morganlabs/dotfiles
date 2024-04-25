@@ -1,0 +1,6 @@
+---
+- name: Install
+  become: true
+  pacman:
+    name: polkit-kde-agent
+    state: present

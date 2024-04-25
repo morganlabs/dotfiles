@@ -1,0 +1,13 @@
+[memory]
+command=$SCRIPT_DIR/memory
+label=MEM 
+interval=2
+
+[cpu]
+command=$SCRIPT_DIR/cpu_usage
+interval=2
+LABEL=CPU 
+
+[time]
+command=date +'%A %d %B %H:%M:%S'
+interval=1

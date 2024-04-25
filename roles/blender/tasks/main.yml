@@ -1,0 +1,15 @@
+---
+- name: Install
+  become: true
+  flatpak:
+    name: org.blender.Blender
+    state: present
+- name: Check GPU
+  shell: lspci | grep -i "VGA"
+  register: gpu_info
+- name: Install AMD drivers
+  become: true
+  pacman:
+    name: hip-runtime-amd
+    state: present
+  when: "'AMD' in gpu_info.stdout"

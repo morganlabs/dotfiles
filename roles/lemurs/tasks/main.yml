@@ -1,0 +1,21 @@
+---
+- name: Install
+  kewlfft.aur.aur:
+    name: lemurs
+    state: present
+- name: Create Wayland location
+  become: true
+  file:
+    path: /etc/lemurs/wayland
+    state: directory
+- name: Add Sway launch script
+  become: true
+  template:
+    src: sway.j2
+    dest: /etc/lemurs/wayland/sway
+    mode: +x
+- name: Enable
+  become: true
+  systemd_service:
+    name: lemurs
+    enabled: true

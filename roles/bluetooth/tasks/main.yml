@@ -1,0 +1,12 @@
+---
+- name: Install
+  become: true
+  pacman:
+    name: ["bluez", "bluez-utils", "blueman"]
+    state: present
+- name: Enable
+  become: true
+  systemd_service:
+    name: bluetooth
+    enabled: true
+    state: started

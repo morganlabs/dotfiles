@@ -1,0 +1,20 @@
+---
+- name: Install
+  pacman:
+    name: git
+    state: present
+- name: Email address
+  git_config:
+    name: user.name
+    scope: global
+    value: "Morgan Jones"
+- name: Name
+  git_config:
+    name: user.email
+    scope: global
+    value: "me@morganlabs.dev"
+- name: Default branch
+  git_config:
+    name: init.defaultBranch
+    scope: global
+    value: "main"

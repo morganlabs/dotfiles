@@ -1,0 +1,19 @@
+---
+- name: Install
+  become: true
+  pacman:
+    name:
+      [
+        "pipewire",
+        "wireplumber",
+        "pipewire-jack",
+        "pipewire-alsa",
+        "pipewire-pulse",
+      ]
+    state: present
+- name: Enable pipewire-pulse
+  systemd:
+    name: pipewire-pulse
+    state: started
+    enabled: true
+    scope: user

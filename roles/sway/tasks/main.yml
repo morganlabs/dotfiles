@@ -1,0 +1,35 @@
+---
+- name: Install
+  become: yes
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    name:
+      [
+        "sway",
+        "swaybg",
+        "swaylock",
+        "swayidle",
+        "i3blocks",
+        "mpstat",
+        "autotiling",
+        "wmenu",
+        "dmenu",
+        "network-manager-applet",
+        "pipewire",
+        "pipewire-jack",
+        "pipewire-alsa",
+        "pipewire-pulse",
+        "xdg-desktop-portal-wlr",
+        "xdg-desktop-portal-gnome",
+      ]
+    state: present
+- name: Config
+  file:
+    src: "{{ role_path }}/files/"
+    dest: "{{ config }}/sway"
+    state: link
+- name: Enable Pipewire Pulse
+  systemd:
+    name: pipewire-pulse
+    state: started
+    scope: user

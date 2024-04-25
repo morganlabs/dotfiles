@@ -1,0 +1,22 @@
+exec_always autotiling -w 1 2 3 4 5 6 7 8 9
+
+exec_always nm-applet --indicator
+exec nextcloud
+exec /usr/lib/polkit-kde-authentication-agent-1
+
+assign [app_id="kitty"] workspace 1
+assign [app_id="LibreWolf"] workspace 2
+assign [class="obsidian"] workspace 3
+assign [class="Spotify"] workspace 9
+assign [class="Element"] workspace 10
+assign [class="discord"] workspace 10
+
+for_window [class="Element"] layout tabbed
+for_window [class="discord"] layout tabbed
+
+exec kitty
+exec flatpak run io.gitlab.librewolf-community
+exec flatpak run md.obsidian.Obsidian
+exec /usr/local/bin/spotify-adblock
+exec flatpak run im.riot.Riot
+exec flatpak run com.discordapp.Discord

@@ -46,3 +46,34 @@
     - { name: node, tags: ["node"] }
     - { name: nvim, tags: ["nvim"] }
     - { name: fonts, tags: ["fonts"] }
+    - { name: man, tags: ["man"] }
+    - { name: tmux, tags: ["tmux"] }
+    - { name: flatpak, tags: ["flatpak"] }
+
+    - { name: sway, tags: ["sway"] }
+    - { name: i3blocks, tags: ["i3blocks"] }
+    - { name: kitty, tags: ["kitty"] }
+    - { name: librewolf, tags: ["librewolf"] }
+
+    - { name: discord, tags: ["discord"] }
+    - { name: element, tags: ["element"] }
+    - { name: blender, tags: ["blender"] }
+    - { name: flatseal, tags: ["flatseal"] }
+    - { name: git, tags: ["git"] }
+    - { name: lemurs, tags: ["lemurs"] }
+    - { name: libreoffice, tags: ["libreoffice"] }
+    - { name: mako, tags: ["mako"] }
+    - { name: obsidian, tags: ["obsidian"] }
+    - { name: pavucontrol, tags: ["pavucontrol"] }
+    - { name: pipewire, tags: ["pipewire"] }
+    - { name: polkit, tags: ["polkit"] }
+    - { name: spotify, tags: ["spotify"] }
+    - { name: steam, tags: ["steam"] }
+    - { name: transmission, tags: ["transmission"] }
+    - { name: ufw, tags: ["ufw"] }
+    - { name: unzip, tags: ["unzip"] }
+    - { name: vimv, tags: ["vimv"] }
+    - { name: wayland, tags: ["wayland"] }
+    - { name: wl-clipboard, tags: ["wl-clipboard"] }
+    - { name: bluetooth, tags: ["bluetooth"] }
+    - { name: theming, tags: ["theming"] }

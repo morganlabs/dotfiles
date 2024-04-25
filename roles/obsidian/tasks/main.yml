@@ -1,0 +1,6 @@
+---
+- name: Install
+  become: true
+  flatpak:
+    name: md.obsidian.Obsidian
+    state: present

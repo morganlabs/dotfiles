@@ -2,10 +2,10 @@
 - name: Install
   become: true
   pacman:
-    name: ["neovim", "ripgrep"]
+    name: ["mako", "libnotify"]
     state: present
 - name: Config
   file:
-    src: "{{ role_path }}/files/"
-    dest: "{{ config }}/nvim"
+    src: "{{ role_path }}/files"
+    dest: "{{ config }}/mako"
     state: link

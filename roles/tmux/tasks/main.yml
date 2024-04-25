@@ -2,10 +2,10 @@
 - name: Install
   become: true
   pacman:
-    name: ["neovim", "ripgrep"]
+    name: tmux
     state: present
 - name: Config
   file:
     src: "{{ role_path }}/files/"
-    dest: "{{ config }}/nvim"
+    dest: "{{ config }}/tmux"
     state: link

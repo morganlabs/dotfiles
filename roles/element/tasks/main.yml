@@ -1,0 +1,6 @@
+---
+- name: Install
+  become: true
+  flatpak:
+    name: im.riot.Riot
+    state: present

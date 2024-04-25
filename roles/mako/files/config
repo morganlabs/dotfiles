@@ -1,0 +1,30 @@
+font=IBM Plex Mono 11
+width=340
+height=120
+margin=10
+padding=8
+format=<span text_transform="uppercase" size="8pt">%a</span>\n<b><span size="12pt">%s</span></b>\n%b
+
+sort=-time
+default-timeout=8000
+ignore-timeout=1
+
+background-color=#121212
+text-color=#ffffff
+border-color=#285577
+
+[app-name=""]
+format=<b><span size="12pt">%s</span></b>\n%b
+
+[mode=dnd]
+default-timeout=0
+ignore-timeout=1
+invisible=1
+
+[urgency=high]
+default-timeout=0
+border-color=#ff0000
+invisible=0
+
+[app-name="Screenshot"]
+invisible=0

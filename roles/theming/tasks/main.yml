@@ -1,0 +1,9 @@
+---
+- name: Install
+  become: true
+  pacman:
+    name: ["breeze", "breeze-gtk"]
+- name: Gtk3 settings.ini
+  template:
+    src: settings.ini.j2
+    dest: "{{ config }}/gtk-3.0/settings.ini"

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+USAGE=`df -h -H /`
+USED=`echo "$usage" | awk '{ sum+=$3 } END { print sum }'`
+SIZE=`echo "$usage" | awk '{ sum+=$2 } END { print sum }'`
+PERC=`echo "$usage" | awk '{ sum+=$5 } END { print sum }'`
+
+echo "$USED/$SIZE ($PERC)"

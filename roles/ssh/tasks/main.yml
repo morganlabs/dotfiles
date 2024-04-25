@@ -18,7 +18,7 @@
 - name: Install Private key
   copy:
     dest: "{{ home }}/.ssh/id_ed25519_sk"
-    content: "{{ sk_ssh_prikey }}"
+    content: "{{ sk_ssh_prikey }}\n"
     mode: 0600
 - name: Add SSH key to authorized_keys
   authorized_key:

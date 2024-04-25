@@ -1,0 +1,19 @@
+---
+- name: Install
+  become: true
+  pacman:
+    name: ufw
+    state: present
+- name: Config IPv4
+  become: true
+  template:
+    src: user.rules.j2
+    dest: /etc/ufw/user.rules
+- name: Config IPv6
+  become: true
+  template:
+    src: user6.rules.j2
+    dest: /etc/ufw/user6.rules
+- name: Enable
+  become: true
+  shell: ufw enable

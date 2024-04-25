@@ -1,0 +1,11 @@
+---
+- name: Install
+  become: true
+  pacman:
+    name: flatpak
+    state: present
+- name: Add directory to PATH
+  become: true
+  lineinfile:
+    line: 'PATH="$PATH:/var/lib/flatpak/exports/bin"'
+    dest: /etc/environment

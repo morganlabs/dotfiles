@@ -1,0 +1,6 @@
+---
+- name: Install
+  become: true
+  pacman:
+    name: ["xorg-xwayland", "qt5-wayland", "qt6-wayland", "gtk3", "gtk4"]
+    state: present

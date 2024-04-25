@@ -1,0 +1,6 @@
+---
+- name: Install
+  become: true
+  flatpak:
+    name: io.gitlab.librewolf-community
+    state: present
