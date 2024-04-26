@@ -11,4 +11,8 @@ input type:mouse {
 input type:touchpad {
   accel_profile flat
   pointer_accel 0.45
+  natural_scroll enabled
+  drag enabled
+  drag_lock enabled
+  tap enabled
 }
