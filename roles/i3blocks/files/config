@@ -6,7 +6,13 @@ interval=2
 [cpu]
 command=$SCRIPT_DIR/cpu_usage
 interval=2
-LABEL=CPU 
+label=CPU 
+
+[battery]
+command=$SCRIPT_DIR/battery
+interval=2
+label=BAT 
+BAT_NUMBER=0
 
 [time]
 command=date +'%A %d %B %H:%M:%S'

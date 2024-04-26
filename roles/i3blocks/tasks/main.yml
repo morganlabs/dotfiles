@@ -2,7 +2,7 @@
 - name: Install
   become: true
   pacman:
-    name: i3blocks
+    name: ["i3blocks", "sysstat", "acpi"]
     state: present
 - name: Config
   file:
