@@ -1,0 +1,11 @@
+---
+- name: Install Rustup
+  become: true
+  pacman:
+    name: rustup
+    state: present
+- name: Install Latest
+  shell:
+    cmd: rustup install stable
+  args:
+    creates: "{{ home }}/.cargo/bin"

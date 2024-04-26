@@ -3,6 +3,10 @@
   become: true
   pacman:
     name: ["breeze", "breeze-gtk"]
+- name: Create Gtk3 settings directory
+  file:
+    path: "{{ config }}/gtk-3.0"
+    state: directory
 - name: Gtk3 settings.ini
   template:
     src: settings.ini.j2

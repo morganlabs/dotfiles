@@ -1,14 +1,13 @@
 ---
-- name: Install nvm
+- name: Install
   become: yes
-  become_user: aur_builder
-  kewlfft.aur.aur:
-    name: nvm
+  pacman:
+    name: ["nodejs", "npm"]
     state: present
-- name: Install Node LTS
-  shell: /bin/bash -c "source /usr/share/nvm/nvm.sh && nvm install --lts"
-  args:
-    creates: /home/takumi/.nvm/versions/node/
+- name: Config
+  template:
+    src: .npmrc.j2
+    dest: "{{ home }}/.npmrc"
 - name: Install Bun
   npm:
     name: bun

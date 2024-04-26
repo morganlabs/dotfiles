@@ -10,6 +10,7 @@ set $right l
 
 # OUTPUTS
 output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output eDP-1 scale 1.25
 
 # IDLE
 # exec swayidle -w \

@@ -44,6 +44,7 @@
     - { name: ssh, tags: ["ssh"] }
     - { name: zsh, tags: ["zsh"] }
     - { name: node, tags: ["node"] }
+    - { name: rust, tags: ["rust"] }
     - { name: nvim, tags: ["nvim"] }
     - { name: fonts, tags: ["fonts"] }
     - { name: man, tags: ["man"] }
@@ -77,3 +78,4 @@
     - { name: wl-clipboard, tags: ["wl-clipboard"] }
     - { name: bluetooth, tags: ["bluetooth"] }
     - { name: theming, tags: ["theming"] }
+    - { name: nextcloud, tags: ["nextcloud"] }
