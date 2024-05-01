@@ -55,6 +55,17 @@ return {
       typescript = {},
     })
 
+    lspc.rust_analyzer.setup({})
+    lspc.rust_analyzer.setup({
+      settings = {
+        ["rust-analyzer"] = {
+          checkOnSave = {
+            command = "clippy"
+          }
+        }
+      }
+    })
+
     -- LSPs
     mason.setup({
       automatic_installation = true,
