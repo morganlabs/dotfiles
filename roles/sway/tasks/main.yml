@@ -20,6 +20,8 @@
         "pipewire-pulse",
         "xdg-desktop-portal-wlr",
         "xdg-desktop-portal-gnome",
+        "backlightctl",
+        "pamixer",
       ]
     state: present
 - name: Config

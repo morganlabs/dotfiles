@@ -2,5 +2,5 @@
 - name: Install
   become: true
   flatpak:
-    name: org.libreoffice.LibreOffice
+    name: org.onlyoffice.desktopeditors
     state: present

@@ -61,8 +61,9 @@
     - { name: blender, tags: ["blender"] }
     - { name: flatseal, tags: ["flatseal"] }
     - { name: git, tags: ["git"] }
+    - { name: joshuto, tags: ["joshuto"] }
     - { name: lemurs, tags: ["lemurs"] }
-    - { name: libreoffice, tags: ["libreoffice"] }
+    - { name: onlyoffice, tags: ["onlyoffice"] }
     - { name: mako, tags: ["mako"] }
     - { name: obsidian, tags: ["obsidian"] }
     - { name: pavucontrol, tags: ["pavucontrol"] }
@@ -79,3 +80,4 @@
     - { name: bluetooth, tags: ["bluetooth"] }
     - { name: theming, tags: ["theming"] }
     - { name: nextcloud, tags: ["nextcloud"] }
+    - { name: logind, tags: ["logind"] }

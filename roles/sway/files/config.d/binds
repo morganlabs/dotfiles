@@ -1,3 +1,17 @@
+set $scripts ~/.config/sway/scripts
+
+# SWITCHES
+bindswitch lid:on exec swaymsg output eDP-1 disable
+bindswitch lid:off exec swaymsg output eDP-1 enable && killall swaybar && swaybar -b bar-0 -d
+
+# FUNCTION KEYS
+bindsym XF86MonBrightnessUp exec $scripts/brightness.sh inc
+bindsym XF86MonBrightnessDown exec $scripts/brightness.sh dec
+
+bindsym XF86AudioRaiseVolume exec $scripts/volume.sh inc
+bindsym XF86AudioLowerVolume exec $scripts/volume.sh dec
+bindsym XF86AudioMute exec $scripts/volume.sh mut
+
 # EXECUTE PROGRAMS
 bindsym $mod+Return exec kitty
 bindsym $mod+d exec dmenu_path | wmenu -i -f "IBM Plex Mono 10" | xargs swaymsg exec --

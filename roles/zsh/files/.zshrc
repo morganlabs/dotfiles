@@ -65,6 +65,7 @@ alias src="source $HOME/.zshrc"
 alias vi="nvim"
 alias vim="nvim"
 alias gbr="git branch --format=\"'%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:green) (%(committerdate:relative)) [ %(authorname) ]'\""
+alias js="joshuto"
 
 mkabbr c="clear"
 mkabbr l="ls"
@@ -95,4 +96,4 @@ function mkcdir() {
 }
 
 # PROMPT --------------------- #
-PROMPT="%B%F{orange}[%m:%3~]%b%{$reset_color%} "
+PROMPT="%B%F{orange}[%n@%m:%3~]%b%{$reset_color%} "

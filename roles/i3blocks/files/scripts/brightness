@@ -1,0 +1,6 @@
+#!/bin/sh
+
+BRIGHTNESS=`brightnessctl get`
+MAX_BRIGHT=`brightnessctl max`
+PERCENTAGE=`echo "$BRIGHTNESS" "$MAX_BRIGHT" | awk '{print ($1/$2)*100}'`
+echo "$PERCENTAGE%"

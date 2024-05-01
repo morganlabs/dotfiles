@@ -1,0 +1,19 @@
+#!/bin/sh
+
+VOLUME=`pamixer --get-volume`
+MUTED=`pamixer --get-mute`
+SINK=`pamixer --get-default-sink | awk -F'"' '$0=$4'`
+
+case "$SINK" in
+  "Tiger Lake-LP"*"Speaker + Headphones") SINK="Speakers/Headphones" ;;
+  "Tiger Lake-LP"*"Speaker + Headphones") SINK="Display" ;;
+esac
+
+if [[ "$MUTED" == "true" ]]; then
+  VOLUME="Muted"
+else
+  VOLUME+="%"
+fi
+
+echo "$VOLUME ($SINK)"
+

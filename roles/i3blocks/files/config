@@ -3,10 +3,16 @@ command=$SCRIPT_DIR/memory
 label=MEM 
 interval=2
 
-[cpu]
-command=$SCRIPT_DIR/cpu_usage
-interval=2
-label=CPU 
+[brightness]
+command=$SCRIPT_DIR/brightness
+interval=30
+signal=20
+label=BRI 
+
+[volume]
+command=$SCRIPT_DIR/volume
+interval=30
+signal=10
 
 [battery]
 command=$SCRIPT_DIR/battery

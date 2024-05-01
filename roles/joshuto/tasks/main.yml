@@ -1,0 +1,12 @@
+---
+- name: Install
+  become: true
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    name: joshuto-bin
+    state: present
+- name: Config
+  file:
+    src: "{{ role_path }}/files"
+    dest: "{{ config }}/joshuto"
+    state: link
