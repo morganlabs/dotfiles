@@ -20,7 +20,7 @@
         "pipewire-pulse",
         "xdg-desktop-portal-wlr",
         "xdg-desktop-portal-gnome",
-        "backlightctl",
+        "brightnessctl",
         "pamixer",
       ]
     state: present
