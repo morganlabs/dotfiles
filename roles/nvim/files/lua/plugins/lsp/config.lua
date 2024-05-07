@@ -48,6 +48,8 @@ return {
       "emmet_ls",
       "cssls",
       "lua_ls",
+      "pylsp",
+      "pyright"
     }
     lsp_zero.setup_servers(servers)
 

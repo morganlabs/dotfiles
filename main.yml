@@ -81,3 +81,4 @@
     - { name: theming, tags: ["theming"] }
     - { name: nextcloud, tags: ["nextcloud"] }
     - { name: logind, tags: ["logind"] }
+    - { name: proton, tags: ["proton"] }
