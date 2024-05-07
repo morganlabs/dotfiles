@@ -6,8 +6,6 @@
     name: tidal-hifi-bin
     state: present
 - name: Config
-  file:
-    src: "{{ role_path }}/files/config.json"
+  template:
+    src: config.json.j2
     dest: "{{ config }}/tidal-hifi/config.json"
-    state: link
-    force: true
