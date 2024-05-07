@@ -5,3 +5,9 @@
   kewlfft.aur.aur:
     name: tidal-hifi-bin
     state: present
+- name: Config
+  file:
+    src: "{{ role_path }}/files/config.json"
+    dest: "{{ config }}/tidal-hifi/config.json"
+    state: link
+    force: true
