@@ -4,6 +4,9 @@
   flatpak:
     name: com.discordapp.Discord
     state: present
+- name: Enable Wayland
+  become: true
+  shell: flatpak override --socket=wayland com.discordapp.Discord
 - name: Fix Discord RPC for other non-Flatpak apps (1/3)
   file:
     path: "{{ config }}/user-tmpfiles.d"

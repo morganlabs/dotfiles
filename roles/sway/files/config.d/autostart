@@ -6,17 +6,17 @@ exec /usr/lib/polkit-kde-authentication-agent-1
 
 assign [app_id="kitty"] workspace 1
 assign [app_id="LibreWolf"] workspace 2
-assign [class="obsidian"] workspace 3
-assign [class="Spotify"] workspace 9
-assign [class="Element"] workspace 10
-assign [class="discord"] workspace 10
+assign [app_id="obsidian"] workspace 3
+assign [app_id="tidal-hifi"] workspace 9
+assign [app_id="im.riot.Riot"] workspace 10
+assign [app_id="discord"] workspace 10
 
-for_window [class="Element"] layout tabbed
-for_window [class="discord"] layout tabbed
+for_window [app_id="im.riot.Riot"] layout tabbed
+for_window [app_id="discord"] layout tabbed
 
 exec kitty
 exec flatpak run io.gitlab.librewolf-community
 exec flatpak run md.obsidian.Obsidian
-exec /usr/local/bin/spotify-adblock
+exec tidal-hifi
 exec flatpak run im.riot.Riot
 exec flatpak run com.discordapp.Discord

@@ -4,3 +4,6 @@
   flatpak:
     name: io.gitlab.librewolf-community
     state: present
+- name: Enable Security Key support
+  become: true
+  shell: flatpak override --device=all io.gitlab.librewolf-community
