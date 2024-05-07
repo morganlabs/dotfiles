@@ -4,3 +4,17 @@
   flatpak:
     name: com.discordapp.Discord
     state: present
+- name: Fix Discord RPC for other non-Flatpak apps (1/3)
+  file:
+    path: "{{ config }}/user-tmpfiles.d"
+    state: directory
+- name: Fix Discord RPC for other non-Flatpak apps (2/3)
+  template:
+    src: discord-rpc.conf.j2
+    dest: "{{ config }}/user-tmpfiles.d/discord-rpc.conf"
+- name: Fix Discord RPC for other non-Flatpak apps (3/3)
+  systemd_service:
+    name: systemd-tmpfiles-setup
+    scope: user
+    enabled: true
+    state: started

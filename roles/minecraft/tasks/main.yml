@@ -1,0 +1,7 @@
+---
+- name: Install
+  become: true
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    name: atlauncher-bin
+    state: present
